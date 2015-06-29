@@ -1,0 +1,3 @@
+[submodule "programs/RDF2Graph"]
+	path = programs/RDF2Graph
+	url = https://github.com/jessevdam/RDF2Graph
