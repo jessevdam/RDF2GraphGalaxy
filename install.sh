@@ -32,8 +32,8 @@ select yn in "Yes" "No"; do
                 ####################################################
                 #ORACLE Database setup...
                 sudo apt-get install postgresql postgresql-contrib
-                echo "CREATE USER galaxy WITH PASSWORD 'galaxy$PASS'" | sudo -u postgres psql postgres
-                sudo -u postgres createdb --owner=galaxy galaxydb
+                echo "CREATE USER rdf WITH PASSWORD 'rdf$PASS'" | sudo -u postgres psql postgres
+                sudo -u postgres createdb --owner=rdf rdfdb
                 ####################################################
                 #Galaxy configure scripts
                 cp ./settings/tool_conf.xml ../../config/
@@ -53,15 +53,16 @@ select yn in "Yes" "No"; do
                 ####################################################
                 #Installation of apache-jena-2.13.0
                 if ! which tdblodader >/dev/null; then
-                    cat "export JENAROOT=$DIR/Programs/apache-jena-2.13.0" >> ~/.bash.rc
-                    cat "PATH=$JENAROOT/bin:$PATH" >> ~/.bash.rc
+                    echo "export JENAROOT=$DIR/Programs/apache-jena-2.13.0" >> ~/.bashrc
+                    echo "PATH=\$JENAROOT/bin:\$PATH" >> ~/.bashrc
                 if [ ! -d ./Programs/apache-jena-2.13.0/ ]; then
-                        wget -nc http://apache.cs.uu.nl/jena/binaries/apache-jena-2.13.0.tar.gz -P ./Downloads/
+                        wget -nc http://apache.xl-mirror.nl/jena/binaries/apache-jena-2.13.0.tar.gz -P ./Downloads/
+                        #wget -nc http://apache.cs.uu.nl/jena/binaries/apache-jena-2.13.0.tar.gz -P ./Downloads/
                         tar -kxvf ./Downloads/apache-jena-2.13.0.tar.gz -C ./Programs/ 
                 fi
                 fi
                 if ! which Cytoscape >/dev/null; then
-                    cat "export JENAROOT=$DIR/Programs/cytoscape" >> ~/.bash.rc
+                    echo "PATH=$DIR/Programs/cytoscape:\$PATH" >> ~/.bashrc
                     #untested
                     if [ ! -d ./Programs/cytoscape/ ]; then
                         wget -nc http://chianti.ucsd.edu/cytoscape-3.2.0/Cytoscape_3_2_0_unix.sh -P ./Downloads/

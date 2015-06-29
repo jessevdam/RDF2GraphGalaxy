@@ -94,7 +94,7 @@ paste.app_factory = galaxy.web.buildapp:app_factory
 # may use a SQLAlchemy connection string to specify an external database
 # instead.  This string takes many options which are explained in detail in the
 # config file documentation.
-database_connection = postgresql://galaxy:galaxy1234@localhost/galaxydb
+database_connection = postgresql://rdf:rdf1234@localhost/rdfdb
 #mysql://galaxy@localhost/galaxydb?unix_socket=/var/run/mysqld/mysqld.sock
 
 # If the server logs errors about not having enough database pool connections,
