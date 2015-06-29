@@ -2,7 +2,6 @@
 #The instalation script for all Downloads
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-PASS=$( openssl rand -hex 32 )
 
 echo "Do you wish to install all dependencies automatically (admin rights needed)?" yn
 select yn in "Yes" "No"; do
@@ -30,6 +29,7 @@ select yn in "Yes" "No"; do
                         break
                 fi
 
+                sudo apt-get install postgresql postgresql-contrib
                 ./setup.sh
                 ####################################################
                 #Folder initialization
