@@ -1,0 +1,13 @@
+<tool id="RDF2Graph_ExportSHEX" name="Export to ShEx" version="1.0.0">
+  <description></description>
+  <command interpreter="bash">4_exportSHEX.sh $input ${input.ext} $output</command>
+  <inputs>
+    <param name="input" type="data" format="triples" label="recovered structure"/>
+  </inputs>
+  <outputs>
+    <data format="txt" name="output" label="ShEx" />
+  </outputs>
+  <help>
+    Export the recovery result to a cytoscape visualization
+  </help>
+</tool>

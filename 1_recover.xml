@@ -1,0 +1,13 @@
+<tool id="RDF2Graph_Recover" name="Recovery tool" version="1.0.0">
+  <description></description>
+  <command interpreter="bash">1_recover.sh $input ${input.ext} $output</command>
+  <inputs>
+    <param name="input" type="data" format="triples" label="file containing triples"/>
+  </inputs>
+  <outputs>
+    <data format="ttl" name="output" label="recovered structure" />
+  </outputs>
+  <help>
+    Recovery of RDF structure to internal database
+  </help>
+</tool>

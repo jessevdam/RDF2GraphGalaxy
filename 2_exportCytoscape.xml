@@ -1,0 +1,14 @@
+<tool id="RDF2Graph_ExportCytoscape" name="Export to cytoscape" version="1.0.0">
+  <description></description>
+  <command interpreter="bash">2_exportCytoscape.sh $input ${input.ext} $keep $output</command>
+  <inputs>
+    <param name="input" type="data" format="triples" label="recovered structure"/>
+    <param name="keep" type="boolean" checked="false" truevalue="true" falsevalue="false" label="keep only subclasses which have some instances"/>
+  </inputs>
+  <outputs>
+    <data format="cys" name="output" label="cytoscape visualization" />
+  </outputs>
+  <help>
+    Export the recovery result to a cytoscape visualization
+  </help>
+</tool>
