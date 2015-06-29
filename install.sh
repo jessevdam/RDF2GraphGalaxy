@@ -62,9 +62,11 @@ select yn in "Yes" "No"; do
                 fi
                 if ! which Cytoscape >/dev/null; then
                     cat "export JENAROOT=$DIR/Programs/cytoscape" >> ~/.bash.rc
-                    if [ ! -d ./Programs/apache-jena-2.13.0/ ]; then
+                    #untested
+                    if [ ! -d ./Programs/cytoscape/ ]; then
                         wget -nc http://chianti.ucsd.edu/cytoscape-3.2.0/Cytoscape_3_2_0_unix.sh -P ./Downloads/
                         chmod +x ./Downloads/Cytoscape_3_2_0_unix.sh
+                        ./Downloads/Cytoscape_3_2_0_unix.sh -q -dir $DIR/Programs/cytoscape
                     fi
                 fi
                 #Installation of apacke fuseki
