@@ -29,6 +29,10 @@ select yn in "Yes" "No"; do
                         break
                 fi
 
+                git submodule init
+                git submodule update 
+                #git submodule foreach git pull
+
                 sudo apt-get install postgresql postgresql-contrib
                 ./setup.sh
                 ####################################################
