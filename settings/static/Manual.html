@@ -1,5 +1,40 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html><head></head><body>
-TODO
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><title>Manual Galaxy RDF2Graph</title></head><body style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space;" lang="">
+<div style="text-align: center;"><span style="font-size: 19px;"><b>The galaxy interface for RDF2Graph</b></span></div>
+<div style="text-align: center;"><b><br/></b></div>
+<div style="text-align: center;"><b>Jesse C.J. van Dam</b></div>
+<div style="text-align: center;"><b><br/></b></div>
+<p><b>Welcome<br/></b>This page will provide you with a short documentation on how to use the RDF2Graph tool within the galaxy platform. Structure recovery can be performed on various triple formats (NTriples, N3, Turtle, XML/RDF, JSON-LD).<br/>
+<br/></p>
+<p><b>The interface</b><br>
+For those who are new to the Galaxy interface, <b>on the left side</b> you have all the tools that are available. <b>In the middle</b>, where you are now reading this manual is where you can set the settings for the tools, like, choosing which files to perform recovery on and to set options like enabling simplification. <b>On the right side</b> you have your current history where you can download or view your results. </p>
+<p><b>Tools</b><br/>
+<ol>
+<li><b>Recovery tool<br/></b>The initinial recovery tool need to recover the structure from an uploaded RDF file (supporting NTriples, N3, Turtle, XML/RDF and JSON-LD). The resulting RDF turtle file can be directly downloaded or just in one of the following exporters.
+<li><b>Cytoscape export tool<br/></b>The exporter that export the result to an Cytoscape session file that can be opened with Cytoscape 3.0 or higher.
+<li><b>OWL export tool<br/></b>The exporter that export the result to an OWL file, which can be opened with Protege.
+<li><b>ShEx export tool<br/></b>The exporter that export the result to a ShEx file.
+</ol>
+<p><b>Example</b><br/>
+Use this symbol to upload your RDF file from your local machine or from another website. <img src="Manual_resources/upload.png"/><b> </b>Then click on paste/fetch data. It should look like this.<b><br/></b><img src="Manual_resources/pastfetch.png"/><br/>
+When the file is located on your local machine click choose local file. If the file is on another server and you have copied the URL past it in the text box area.<br/>
+<b><br/></b><img src="Manual_resources/urlpaste.png"/><br/></br>Click start and it will turn green when done and it should appear in your history on the right and turn green.<br/><br/>
+<img src="Manual_resources/History1.png"/><br/>
+<br/>
+<b>Run RDF2Graph recovery</b><br/><br/>
+We now select the 'Recovery tool' in the left bar (first click on RDF2Graph to open menu), which will show the following options in the middle screen. Select your upload file and click 'execute'. <br/><br/>
+<img src="Manual_resources/recoverytool.png"/> <br/><br/>
+On the right side a job will be executed and will be yellow during computation and turn green upon completion. <br/>
+<p><b>Run ShEx exporter</b><br/><br/>
+After this step you can use for example the ShEx exporter using the 'Export to Shex' tool. Please select the result of the recovery tool and press 'execute'.<br/><br/>
+<img src="Manual_resources/shextool.png"/> <br/><br/>
+Again on the right side a job will be executed and will be yellow during computation and turn green upon completion. When completed click on the <img src="Manual_resources/eye.png"/> icon to view the result in the middle screen or click on the title to expand the item and click on the <img src="Manual_resources/save.png"/> button to save the file on your computer.<br><br/>
+<b>Cytoscape and OWL exporter</b><br/><br/>
+For exporting to cytoscape or owl file please use the 'export to cytoscape' and 'export to OWL' tools and download the result to your local computer and open either with Cytoscape (version 3.0 or higher) or with Protoge. <br/><br/>
+Local instalation of this RDF2Graph galaxy instalation? Please contact jesse.vandam (_a_t_) wur (_d_o_t_) nl
+</p>
+
+
+
 </body></html>

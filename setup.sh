@@ -20,4 +20,4 @@ if [ ! -f ../../config/galaxy.ini ]; then
         sed -e s/tobereplaced@email.com/$emailGalaxy/g ./settings/galaxy.ini.sample | sed -e s/rdf1234/rdf$PASS/g > ../../config/galaxy.ini
 fi
 cp ./settings/datatypes_conf.xml ../../config/
-cp -r settings/static/ ../../static/
+cp -r settings/static/ ../../
