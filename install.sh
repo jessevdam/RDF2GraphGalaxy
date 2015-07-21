@@ -29,6 +29,11 @@ select yn in "Yes" "No"; do
                         break
                 fi
 
+                #git submodule init
+                git submodule update
+                ./programs/RDF2Graph/setup.sh 
+                #git submodule foreach git pull
+
                 sudo apt-get install postgresql postgresql-contrib
                 ./setup.sh
                 ####################################################
@@ -45,6 +50,7 @@ select yn in "Yes" "No"; do
                         tar -kxvf ./Downloads/apache-jena-2.13.0.tar.gz -C ./Programs/ 
                 fi
                 fi
+                echo "Please make sure that at least one app is installed in Cytoscape othwise scripting functionality does not work in Cytoscape (BUG Cytoscape)"
                 if ! which Cytoscape >/dev/null; then
                     echo "PATH=$DIR/Programs/cytoscape:\$PATH" >> ~/.bashrc
                     #untested

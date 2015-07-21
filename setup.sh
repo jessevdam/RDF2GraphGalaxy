@@ -4,8 +4,18 @@ PASS=$( openssl rand -hex 32 )
 #setup without the installation of all the dependencies               
 ####################################################
 #Database setup...
-#echo "DROP DATABASE rdfdb" | sudo -u postgres psql postgres
-#echo "DROP USER rdf" | sudo -u postgres psql postgres
+echo "Do you wish to resetup the config OLD CONFIG AND DB WILL BE LOST!!!!!!!! ?" yn
+select yn in "Yes" "No"; do
+        case $yn in
+                Yes )
+                        rm ../../config/galaxy.ini
+                        echo "DROP DATABASE rdfdb" | sudo -u postgres psql postgres
+                        echo "DROP USER rdf" | sudo -u postgres psql postgres
+                break;;
+                No )
+                break;;
+        esac
+done
 echo "CREATE USER rdf WITH PASSWORD 'rdf$PASS'" | sudo -u postgres psql postgres
 sudo -u postgres createdb --owner=rdf rdfdb
 ####################################################
