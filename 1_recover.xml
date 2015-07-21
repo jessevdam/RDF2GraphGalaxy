@@ -1,13 +1,15 @@
 <tool id="RDF2Graph_Recover" name="Recovery tool" version="1.0.0">
   <description></description>
-  <command interpreter="bash">1_recover.sh $input ${input.ext} $output</command>
+  <command interpreter="bash">1_recover.sh $input ${input.ext} $output $simplify $removeOwl</command>
   <inputs>
     <param name="input" type="data" format="triples" label="file containing triples"/>
+    <param name="simplify" type="boolean" checked="true" truevalue="true" falsevalue="false" label="perform simplification step"/>
+    <param name="removeOwl" type="boolean" checked="true" truevalue="true" falsevalue="false" label="remove the information, which is related to the OWL ontology itself"/>
   </inputs>
   <outputs>
     <data format="ttl" name="output" label="recovered structure" />
   </outputs>
   <help>
-    Recovery of RDF structure to internal database
+    Recovery of the RDF structure, resulting local store can be further exported to either cytoscape session, OWL or ShEx file. Options to enable/disable the simplification step and option to remove the elements in the structure recovery which are realted to the OWL ontology itself.
   </help>
 </tool>

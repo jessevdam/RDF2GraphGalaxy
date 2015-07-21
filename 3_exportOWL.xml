@@ -9,6 +9,6 @@
     <data format="owl" name="output" label="OWL ontology" />
   </outputs>
   <help>
-    Export the recovery result to a OWL ontology, which can be opened with Protoge
+    Export the recovery result to an OWL ontology, which can be opened with Protoge. Option to include or exclude reverse cardinalities is included.
   </help>
 </tool>

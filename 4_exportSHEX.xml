@@ -8,6 +8,6 @@
     <data format="txt" name="output" label="ShEx" />
   </outputs>
   <help>
-    Export the recovery result to a cytoscape visualization
+    Export the recovery results to a ShEx file.
   </help>
 </tool>

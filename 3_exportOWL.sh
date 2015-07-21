@@ -14,6 +14,13 @@ extension=$2
 includerev=$3
 output=$4
 
+size=$( cat $input | wc -l )
+if [ $size -ge 20000000 ] ; then
+  echo "number of lines limited to 20.000.000" 1>&2;
+  echo "nubmer of lines in file $size" 1>&2;
+  exit
+fi
+
 cp $input $input"."$extension
 tdbloader -loc ./tempdb --graph=http://ssb.wur.nl/RDF2Graph/ $input"."$extension
 $DIR/programs/RDF2Graph/owlExporter/export.sh ./tempdb $includerev $output

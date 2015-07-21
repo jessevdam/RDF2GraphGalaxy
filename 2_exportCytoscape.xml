@@ -1,14 +1,14 @@
 <tool id="RDF2Graph_ExportCytoscape" name="Export to cytoscape" version="1.0.0">
   <description></description>
-  <command interpreter="bash">2_exportCytoscape.sh $input ${input.ext} $keep $output</command>
+  <command interpreter="bash">2_exportCytoscape.sh $input ${input.ext} $includeConceptClasses $output</command>
   <inputs>
     <param name="input" type="data" format="triples" label="recovered structure"/>
-    <param name="keep" type="boolean" checked="false" truevalue="true" falsevalue="false" label="keep only subclasses which have some instances"/>
+    <param name="includeConceptClasses" type="boolean" checked="false" truevalue="true" falsevalue="false" label="include concept classes in network view"/>
   </inputs>
   <outputs>
     <data format="cys" name="output" label="cytoscape visualization" />
   </outputs>
   <help>
-    Export the recovery result to a cytoscape visualization
+    Export the recovery result to a Cytoscape visualization with option to optionally include the concept classes in the network view. Please download the result and open the cytoscape session file with Cytoscape version 3.0 or higher. 
   </help>
 </tool>
