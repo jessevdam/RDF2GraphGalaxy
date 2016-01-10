@@ -21,7 +21,7 @@ else
 fi
 
 if [ "$removeOWL" = "true" ] ; then
-  removeOWL="--removeOWLClasses"
+  removeOWL="--removeOWLProperties"
 else
   removeOWL=""
 fi

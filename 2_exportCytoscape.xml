@@ -3,7 +3,11 @@
   <command interpreter="bash">2_exportCytoscape.sh $input ${input.ext} $includeConceptClasses $output</command>
   <inputs>
     <param name="input" type="data" format="triples" label="recovered structure"/>
-    <param name="includeConceptClasses" type="boolean" checked="false" truevalue="true" falsevalue="false" label="include concept classes in network view"/>
+    <param name="includeConceptClasses" type="select" label="which classes to visualize">
+      <option value="default">show only classes with instances</option>
+      <option value="all">show all classes including concept classes</option>
+      <option value="onlyCore">show only classes with properties after the simplification step</option>
+    </param>
   </inputs>
   <outputs>
     <data format="cys" name="output" label="cytoscape visualization" />
