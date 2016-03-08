@@ -1,8 +1,29 @@
 <tool id="RDF2Graph_Recover" name="Recovery tool" version="1.0.0">
   <description></description>
-  <command interpreter="bash">1_recover.sh $input ${input.ext} $output $simplify $removeOwl</command>
+  <command interpreter="bash">
+   #if $source.source_select=="file"
+     1_recover.sh '$source.source_select' '$source.input' '${source.input.ext}' '' '' '' '' '$output' '$simplify' '$removeOwl'
+   #else
+     1_recover.sh '$source.source_select' '' '' '$source.endpoint_adress' '$source.graph' '$source.username' '$source.password' '$output' '$simplify' '$removeOwl'
+   #end if
+  </command>
   <inputs>
-    <param name="input" type="data" format="triples" label="file containing triples"/>
+    <conditional name="source">
+       <param name="source_select" type="select" label="Target source">
+          <option value="file">Uploaded file</option>
+          <option value="endpoint">Sparql endpoint (not public!!)</option>
+       </param>
+       <when value="file">
+          <param name="input" type="data" format="triples" label="file containing triples"/>
+       </when>
+       <when value="endpoint">
+          <param name="endpoint_adress" type="text" label="endpoint adress" />
+          <param name="graph" type="text" label="optional graph" optional="true" />
+          <param name="username" type="text" label="optional username" optional="true" />
+          <param name="password" type="text" label="optional password" optional="true" />
+       </when>
+    </conditional>
+    
     <param name="simplify" type="boolean" checked="true" truevalue="true" falsevalue="false" label="perform simplification step"/>
     <param name="removeOwl" type="boolean" checked="true" truevalue="true" falsevalue="false" label="remove the information, which is related to the OWL ontology itself"/>
   </inputs>
@@ -10,6 +31,6 @@
     <data format="ttl" name="output" label="recovered structure" />
   </outputs>
   <help>
-    Recovery of the RDF structure, resulting local store can be further exported to either cytoscape session, OWL or ShEx file. Options to enable/disable the simplification step and option to remove the elements in the structure recovery which are realted to the OWL ontology itself.
+    Recovery of the RDF structure from uploaded file or SPARQL endpoint. Do not use public endpoint because the structure recovery is very heavy for the endpoint. If Graph is specified only triples within the specified graph are recovered. If SPARQL endpoint need user name and password then please enter details otherwise leave empty. <br/>The resulting local store can be further exported to either cytoscape session, OWL or ShEx file. Options to enable/disable the simplification step and option to remove the elements in the structure recovery which are related to the OWL ontology itself.
   </help>
 </tool>
