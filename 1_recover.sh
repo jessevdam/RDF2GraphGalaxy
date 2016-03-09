@@ -60,5 +60,4 @@ fi
 
 java -jar $DIR/programs/RDF2Graph/target/RDF2Graph-0.1-jar-with-dependencies.jar temp $graph_adress --all $removeOWL $simplify
 tdbquery --loc temp --query $DIR/programs/RDF2Graph/rdfExporter/queries/all.txt --results N3 > $output
-$DIR/programs/RDF2Graph/rdfExporter temp $output
 
