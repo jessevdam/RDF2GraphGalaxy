@@ -1,10 +1,10 @@
-<tool id="RDF2Graph_Recover" name="Recovery tool" version="1.0.0">
+<tool id="RDF2Graph_Recover_private" name="Recovery tool" version="1.0.0">
   <description></description>
   <command interpreter="bash">
    #if $source.source_select=="file"
-     1_recover.sh '$source.source_select' '$source.input' '${source.input.ext}' '' '' '' '' '$output' '$simplify' '$removeOwl' '' ''
+     1_recover.sh '$source.source_select' '$source.input' '${source.input.ext}' '' '' '' '' '$output' '$simplify' '$removeOwl' '' '1'
    #else
-     1_recover.sh '$source.source_select' '' '' '$source.endpoint_adress' '$source.graph' '$source.username' '$source.password' '$output' '$simplify' '$removeOwl' '' ''
+     1_recover.sh '$source.source_select' '' '' '$source.endpoint_adress' '$source.graph' '$source.username' '$source.password' '$output' '$simplify' '$removeOwl' '$source.usePass' '1'
    #end if
   </command>
   <inputs>
@@ -17,6 +17,7 @@
           <param name="input" type="data" format="triples" label="file containing triples"/>
        </when>
        <when value="endpoint">
+          <param name="usePass" type="text" label="please enter password (private use only on public server,see comment)"/>
           <param name="endpoint_adress" type="text" label="endpoint adress" />
           <param name="graph" type="text" label="optional graph" optional="true" />
           <param name="username" type="text" label="optional username" optional="true" />
@@ -31,6 +32,7 @@
     <data format="ttl" name="output" label="recovered structure" />
   </outputs>
   <help>
-    Recovery of the RDF structure from uploaded file or SPARQL endpoint. Do not use public endpoint because the structure recovery is very heavy for the endpoint. If Graph is specified only triples within the specified graph are recovered. If SPARQL endpoint need user name and password then please enter details otherwise leave empty. <br/>The resulting local store can be further exported to either cytoscape session, OWL or ShEx file. Options to enable/disable the simplification step and option to remove the elements in the structure recovery which are related to the OWL ontology itself.
+    Recovery of the RDF structure from uploaded file or SPARQL endpoint. Do not use public endpoint because the structure recovery is very heavy for the endpoint. If a Graph is specified only triples within the specified graph are recovered. If SPARQL endpoint need user name and password then please enter details otherwise leave empty. <br/>The resulting local store can be further exported to either cytoscape session, OWL or ShEx file. Options to enable/disable the simplification step and option to remove the elements in the structure recovery which are related to the OWL ontology itself.
+    <br/><br/> The RDF2Graph recovey from SPARQL endpoint can be done with a local (docker image) installation, or you we can perform and help you with the RDF2Graph structure recovery of any endpoint of interest. Mail: jesse.vandam monkeytail wur dot nl.
   </help>
 </tool>

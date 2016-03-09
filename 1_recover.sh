@@ -17,8 +17,9 @@ username=$6
 password=$7
 output=$8
 simplify=$9
-removeOWL=$10
-isDocker=0
+removeOWL=${10}
+usePass=${11}
+isPrivate=${12}
 
 if [ "$simplify" = "true" ] ; then
   simplify="--executeSimplify"
@@ -36,13 +37,24 @@ graph_adress=""
 
 if [ "$source_select" = "file" ] ; then
   size=$( cat $input | wc -l )
-  if [[ $isDocker == 0 && $size -ge 20000000 ]] ; then
+  if [[ $isPrivate == "1" && $size -ge 20000000 ]] ; then
     echo "number of lines limited to 20.000.000" 1>&2;
     echo "nubmer of lines in file $size" 1>&2;
     exit
   fi
   graph_adress=file://$input{$extension}
 else
+  checkpass=""
+  if [ -f $DIR/checkpass.txt ]; then
+    checkpass=$(cat $DIR/checkpass.txt)
+  fi 
+
+  if [[ $isPrivate == "1" && ($checkpass != $usePass) ]] ; then
+    echo "Please use docker image or local installation to perform a RDF2Graph structure recovery from SPARQL endpoint" 1>&2
+    echo "We can also do the RDF2Graph structure recovery for you, please mail: jesse.vandam monkeytail wur dot nl" 1>&2
+    exit
+  fi
+
   if [[ ("$graph" != "") ]] ; then
     graph="[$graph]"
   fi
