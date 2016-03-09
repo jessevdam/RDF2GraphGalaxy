@@ -47,6 +47,7 @@ select yn in "Yes" "No"; do
                 if [ ! -d ./Programs/apache-jena-3.0.1/ ]; then
                         wget -nc http://apache.xl-mirror.nl/jena/binaries/apache-jena-3.0.1.tar.gz -P ./Downloads/
                         tar -kxvf ./Downloads/apache-jena-3.0.1.tar.gz -C ./Programs/ 
+                        cp $DIR/settings/jena-log4j.properties $DIR/Programs/apache-jena-3.0.1/
                 fi
                 if [ -d $DIR/Programs/apache-jena-2.13.0 ]; then
                   rm -r $DIR/Programs/apache-jena-2.13.0
