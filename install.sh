@@ -40,14 +40,16 @@ select yn in "Yes" "No"; do
                 #Folder initialization
                 mkdir ./Programs/
                 ####################################################
-                #Installation of apache-jena-2.13.0
+                #Installation of apache-jena-3.0.1
                 if ! which tdblodader >/dev/null; then
-                    echo "export JENAROOT=$DIR/Programs/apache-jena-2.13.0" >> ~/.bashrc
+                    echo "export JENAROOT=$DIR/Programs/apache-jena-3.0.1" >> ~/.bashrc
                     echo "PATH=\$JENAROOT/bin:\$PATH" >> ~/.bashrc
-                if [ ! -d ./Programs/apache-jena-2.13.0/ ]; then
-                        wget -nc http://apache.xl-mirror.nl/jena/binaries/apache-jena-2.13.0.tar.gz -P ./Downloads/
-                        #wget -nc http://apache.cs.uu.nl/jena/binaries/apache-jena-2.13.0.tar.gz -P ./Downloads/
-                        tar -kxvf ./Downloads/apache-jena-2.13.0.tar.gz -C ./Programs/ 
+                if [ ! -d ./Programs/apache-jena-3.0.1/ ]; then
+                        wget -nc http://apache.xl-mirror.nl/jena/binaries/apache-jena-3.0.1.tar.gz -P ./Downloads/
+                        tar -kxvf ./Downloads/apache-jena-3.0.1.tar.gz -C ./Programs/ 
+                fi
+                if [ -d $DIR/Programs/apache-jena-2.13.0 ]; then
+                  rm -r $DIR/Programs/apache-jena-2.13.0
                 fi
                 fi
                 echo "Please make sure that at least one app is installed in Cytoscape othwise scripting functionality does not work in Cytoscape (BUG Cytoscape)"
